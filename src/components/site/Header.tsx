@@ -7,10 +7,17 @@ import { LiveDot } from "@/components/lot/LotCard";
 import { t } from "@/lib/copy";
 import { ThemeToggle } from "./ThemeToggle";
 
+/**
+ * `desktop: false` keeps a link out of the pill but still in the burger. The
+ * pill already carries the theme toggle and the login button, and a fourth
+ * label crowds it before the max-width does — the menu has room, so contact
+ * lives there.
+ */
 const LINKS = [
-  { href: "/#lots", label: t.nav.lots },
-  { href: "/rules", label: t.nav.rules },
-  { href: "/about", label: t.nav.about },
+  { href: "/lots", label: t.nav.lots, desktop: true },
+  { href: "/rules", label: t.nav.rules, desktop: true },
+  { href: "/about", label: t.nav.about, desktop: true },
+  { href: "/contact", label: t.nav.contact, desktop: false },
 ] as const;
 
 export function Header({ minimal = false }: { minimal?: boolean }) {
@@ -55,7 +62,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
               a phone there is no visible browser back button to fall back on.
             */}
             <Link
-              href="/#lots"
+              href="/lots"
               aria-label={t.nav.back}
               className="flex h-8 shrink-0 items-center gap-1.5 rounded-full border border-line-strong/30 pr-2.5 pl-2 text-ink-soft transition-colors hover:border-accent hover:text-accent"
             >
@@ -99,7 +106,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
 
         <nav className="flex items-center gap-2.5 sm:gap-5">
           {/* Full links from sm up; below that they live in the menu. */}
-          {LINKS.map((l) => (
+          {LINKS.filter((l) => l.desktop).map((l) => (
             <Link
               key={l.href}
               href={l.href}

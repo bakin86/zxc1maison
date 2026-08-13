@@ -169,7 +169,7 @@ export default function AboutPage() {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
-                  href="/#lots"
+                  href="/lots"
                   className="flex h-11 items-center rounded-full bg-ink px-6 text-[0.75rem] font-medium tracking-[0.14em] text-ground uppercase shadow-sm transition-colors hover:bg-accent hover:text-accent-ink"
                 >
                   {t.nav.lots}

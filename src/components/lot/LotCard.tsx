@@ -49,9 +49,10 @@ export function LotCard({ lot }: { lot: Lot }) {
             />
           </ViewTransition>
 
-          {/* Tighter type and tracking at two-up: at full eyebrow tracking this
-              label ran 148px inside a 169px card and sat across the whole top of
-              the photograph. */}
+          {/* Tighter type and tracking at two-up. "Хүлээгдэж байна" is 15
+              characters, and at the eyebrow's full 0.18em tracking it stretched
+              across most of a 169px card. At 8px/0.08em it sits at ~105px —
+              still legible, no longer competing with the photograph. */}
           <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full border border-line/30 bg-ground/90 px-1.5 py-1 backdrop-blur-sm sm:top-2.5 sm:right-2.5 sm:gap-1.5 sm:px-2">
             {isLive && <LiveDot />}
             <span

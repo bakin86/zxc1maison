@@ -152,7 +152,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
           role="status"
           className="mt-4 border-l-2 border-flare pl-3 text-sm leading-relaxed text-muted"
         >
-          {t.auth.demoNotice}
+          {t.common.formDemoNotice}
         </p>
       )}
     </form>

@@ -24,11 +24,11 @@ export function Footer() {
           <Link href="/rules" className="eyebrow transition-colors hover:text-ink">
             {t.nav.rules}
           </Link>
-          <Link href="/#lots" className="eyebrow transition-colors hover:text-ink">
+          <Link href="/lots" className="eyebrow transition-colors hover:text-ink">
             {t.nav.lots}
           </Link>
           <Link
-            href="/#results"
+            href="/lots#results"
             className="eyebrow transition-colors hover:text-ink"
           >
             {t.home.results}
@@ -36,7 +36,12 @@ export function Footer() {
           <Link href="/about" className="eyebrow transition-colors hover:text-ink">
             {t.nav.about}
           </Link>
-          <span className="eyebrow">{t.footer.contact}</span>
+          <Link
+            href="/contact"
+            className="eyebrow transition-colors hover:text-ink"
+          >
+            {t.nav.contact}
+          </Link>
         </nav>
       </div>
       <div className="gutter border-t border-line py-5">

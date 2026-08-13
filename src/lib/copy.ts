@@ -27,6 +27,7 @@ export const t = {
     lots: "Лотууд",
     rules: "Журам",
     about: "Бидний тухай",
+    contact: "Холбоо барих",
     back: "Буцах",
     schedule: "Хөтөлбөр",
     enter: "Нэвтрэх",
@@ -47,8 +48,14 @@ export const t = {
     headline: ["Хугацаа", "хумигдана."],
     lede: "Тойрог давах тусам үнэ хаях хугацаа 5 минутаас 5 секунд болж хумирна. Хамгийн тэвчээртэй нь бус, хамгийн шийдэмгий нь цохино.",
     ctaPrimary: "Танхимд орох",
+    /* The hero CTA now opens the catalogue, not a room. "Enter the hall" would
+       promise a specific sale and drop you into whichever lot happened to be
+       first, which is what it used to do. */
+    ctaBrowse: "Лотуудыг үзэх",
     ctaSecondary: "Журмыг үзэх",
     liveNow: "Шууд эхэлсэн",
+    rightNow: "Яг одоо",
+    lastBid: "сүүлийн хаялт",
     liveNowPlural: "Шууд явагдаж байна",
     liveCount: (n: number) => `${n} лот шууд явагдаж байна`,
     otherLive: "Бусад шууд лот",
@@ -189,10 +196,57 @@ export const t = {
     noAccount: "Бүртгэлгүй юу?",
     haveAccount: "Бүртгэлтэй юу?",
 
-    /* Stated plainly rather than faking a spinner: a form that looks like it
-       submitted but silently drops the data is worse than one that says so. */
-    demoNotice:
-      "Энэ бол зөвхөн нүүр талын загвар. Маягт сервертэй хараахан холбогдоогүй тул мэдээлэл хадгалагдахгүй.",
+  },
+
+  lots: {
+    eyebrow: "Каталог",
+    title: "Лотууд",
+    lede: "Шууд явагдаж буй, удахгүй эхлэх болон дуусгавар болсон бүх лот. Лот бүр өөрийн танхимтай — шууд явагдаж буй лот руу орвол хаялт тэр дороо эхэлнэ.",
+    liveSection: "Шууд явагдаж байна",
+    upcomingSection: "Удахгүй эхэлнэ",
+    resultsSection: "Дууссан",
+    empty: "Энэ ангилалд лот алга.",
+    countLabel: (n: number) => `${n} лот`,
+
+    filterAll: "Бүгд",
+    filterLive: "Шууд",
+    filterUpcoming: "Удахгүй",
+    filterResults: "Дууссан",
+
+    prev: "Өмнөх",
+    next: "Дараах",
+    pageLabel: (n: number) => `${n}-р хуудас`,
+    showing: (from: number, to: number, total: number) =>
+      `${total}-аас ${from}–${to}`,
+  },
+
+  contact: {
+    eyebrow: "Холбоо барих",
+    headline: ["Бидэнтэй", "холбогдоорой."],
+    lede: "Лот тавих, үнэлгээ хийлгэх, эсхүл оролцогчоор бүртгүүлэх талаар асуух зүйл байвал бидэнд бичээрэй. Ажлын өдөрт хариу өгнө.",
+
+    detailsTitle: "Хаяг, холбоо",
+    addressLabel: "Хаяг",
+    address: "Улаанбаатар, Сүхбаатар дүүрэг, 1-р хороо, Энх тайвны өргөн чөлөө 19",
+    phoneLabel: "Утас",
+    phone: "+976 7700 0019",
+    emailLabel: "И-мэйл",
+    email: "info@maison.mn",
+    hoursLabel: "Ажиллах цаг",
+    hours: "Даваа–Баасан · 10:00–19:00",
+
+    formTitle: "Мессеж илгээх",
+    fieldName: "Овог нэр",
+    fieldContact: "Утас эсвэл и-мэйл",
+    fieldTopic: "Сэдэв",
+    fieldMessage: "Мессеж",
+    topics: [
+      "Ерөнхий асуулт",
+      "Лот тавих",
+      "Үнэлгээ хийлгэх",
+      "Оролцогчийн бүртгэл",
+    ],
+    send: "Илгээх",
   },
 
   about: {
@@ -244,5 +298,11 @@ export const t = {
     /* Lowercase, for running into a sentence or an ordinal ("1-р тойрог").
        room.round is the capitalised standalone label. */
     roundWord: "тойрог",
+
+    /* Shared by every front-end-only form (auth, contact). Stated plainly
+       rather than faking a spinner: a form that looks like it submitted but
+       silently drops the data is worse than one that admits it did nothing. */
+    formDemoNotice:
+      "Энэ бол зөвхөн нүүр талын загвар. Маягт сервертэй хараахан холбогдоогүй тул мэдээлэл хадгалагдахгүй.",
   },
 } as const;

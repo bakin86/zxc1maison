@@ -33,7 +33,7 @@ export function LotPreview({ lot }: { lot: Lot }) {
       <Header />
 
       <main className="gutter pt-10 pb-16 md:pt-16">
-        <Link href="/#lots" className="eyebrow transition-colors hover:text-ink">
+        <Link href="/lots" className="eyebrow transition-colors hover:text-ink">
           ← {t.home.allLots}
         </Link>
 

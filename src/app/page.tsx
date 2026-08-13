@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
+import { EnterRoomButton } from "@/components/site/EnterRoomButton";
+import { LiveTicker } from "@/components/site/LiveTicker";
 import { Reveal } from "@/components/site/Reveal";
 import { RoundLadder } from "@/components/site/RoundLadder";
 import { LotCard } from "@/components/lot/LotCard";
@@ -34,7 +36,26 @@ export default async function HomePage() {
 
       <main className="pt-28 md:pt-36 text-left">
         {/* ── Left-Aligned Minimalist Hero ───────────────────────────────── */}
-        <section className="gutter pb-16 md:pb-24 border-b border-line/40">
+        {/*
+          `overflow-x-clip` is load-bearing, not tidiness. The glow below is
+          wider than a phone screen, and an unclipped decorative element widens
+          the *document* — which then makes the fixed header, sized in %, resolve
+          against 534px instead of the 390px viewport and hang off the edge.
+          `clip` rather than `hidden` so the glow can still bleed vertically.
+        */}
+        <section className="gutter relative isolate overflow-x-clip pb-16 md:pb-24 border-b border-line/40">
+          {/* Ambient glow behind the headline. Decorative, non-interactive, and
+              transformed — which is safe here because nothing inside the hero is
+              position: fixed. */}
+          <div
+            aria-hidden
+            className="animate-aura pointer-events-none absolute -top-32 -left-24 -z-10 size-[24rem] rounded-full blur-3xl md:size-[36rem]"
+            style={{
+              background:
+                "radial-gradient(circle, color-mix(in oklab, var(--color-accent) 22%, transparent) 0%, transparent 68%)",
+            }}
+          />
+
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-12">
               <p className="eyebrow animate-rise-in text-muted">{t.home.eyebrow}</p>
@@ -61,19 +82,36 @@ export default async function HomePage() {
                 className="mt-8 flex flex-wrap items-center gap-3 animate-rise-in"
                 style={{ animationDelay: `${BEAT * 3}ms` }}
               >
-                <Link
-                  href={`/auction/${live.id}`}
-                  className="flex h-11 items-center justify-center gap-2.5 rounded-full bg-ink px-6 text-[0.75rem] font-medium tracking-[0.14em] text-ground uppercase transition-colors hover:bg-accent hover:text-accent-ink shadow-sm"
-                >
-                  {t.home.ctaPrimary}
-                  <span aria-hidden>→</span>
-                </Link>
+                {/* Opens the catalogue, not a room. The badge still reports how
+                    many sales are running, so the pull is intact — but the
+                    visitor picks the lot instead of being dropped into one. */}
+                <EnterRoomButton
+                  href="/lots"
+                  label={t.home.ctaBrowse}
+                  liveCount={liveLots.length}
+                  countLabel={t.home.liveCount(liveLots.length)}
+                />
                 <Link
                   href="/rules"
                   className="flex h-11 items-center justify-center rounded-full border border-line-strong/30 px-5 text-[0.75rem] font-medium tracking-[0.14em] text-ink uppercase transition-colors hover:border-accent hover:text-accent"
                 >
                   {t.home.ctaSecondary}
                 </Link>
+              </div>
+
+              {/* An auction in motion, not a poster about one. */}
+              <div
+                className="mt-7 animate-rise-in border-t border-line/40 pt-5"
+                style={{ animationDelay: `${BEAT * 4}ms` }}
+              >
+                <LiveTicker
+                  lots={liveLots.map((l) => ({
+                    id: l.id,
+                    code: l.code,
+                    title: l.title,
+                    startPts: l.openingPts,
+                  }))}
+                />
               </div>
             </div>
           </div>
