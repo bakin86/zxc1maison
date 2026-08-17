@@ -32,7 +32,7 @@ export default function AboutPage() {
           </p>
 
           <h1
-            className="display mt-6 max-w-4xl animate-rise-in text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.96] font-light tracking-[-0.035em] text-ink"
+            className="display mt-6 max-w-4xl animate-rise-in text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.96] tracking-[-0.035em] text-ink"
             style={{ animationDelay: `${BEAT}ms` }}
           >
             {t.about.headline[0]}
@@ -59,7 +59,7 @@ export default function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <p className="eyebrow text-muted">{t.home.howItWorks}</p>
-              <h2 className="display mt-3 text-[clamp(1.875rem,4vw,2.75rem)] leading-tight font-light tracking-[-0.03em] text-ink">
+              <h2 className="display mt-3 text-[clamp(1.875rem,4vw,2.75rem)] leading-tight tracking-[-0.03em] text-ink">
                 {t.about.storyTitle}
               </h2>
             </div>
@@ -157,7 +157,7 @@ export default function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <p className="eyebrow text-muted">{t.about.contactTitle}</p>
-              <h2 className="display mt-3 text-[clamp(1.875rem,4vw,2.75rem)] leading-tight font-light tracking-[-0.03em] text-ink">
+              <h2 className="display mt-3 text-[clamp(1.875rem,4vw,2.75rem)] leading-tight tracking-[-0.03em] text-ink">
                 {t.brand.name}
               </h2>
               <p className="mt-2 text-sm text-muted">{t.about.contactNote}</p>

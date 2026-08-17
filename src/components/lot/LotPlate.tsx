@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { DitherLayer } from "./DitherLayer";
 import type { LotCategory } from "@/lib/types";
 
 /**
@@ -91,6 +92,8 @@ export function LotPlate({
   image,
   alt,
   priority = false,
+  dither = false,
+  ditherRes,
   className = "",
   ratio = "aspect-[4/5]",
 }: {
@@ -102,6 +105,17 @@ export function LotPlate({
   alt?: string;
   /** Set on the one plate that is above the fold, to skip lazy loading. */
   priority?: boolean;
+  /**
+   * Render as a 1-bit ordered dither that resolves to the photograph on
+   * hover, or on scroll where there is no hover.
+   *
+   * Opt-in, because it belongs to *browsing*: the catalogue reads as a printed
+   * index, and the lot's own page shows the object plainly. Turning it on
+   * everywhere would mean a bidder never sees what they are bidding on.
+   */
+  dither?: boolean;
+  /** Dot size. Raise it for large plates — see DEFAULT_RES in DitherLayer. */
+  ditherRes?: number;
   className?: string;
   ratio?: string;
 }) {
@@ -123,7 +137,11 @@ export function LotPlate({
           priority={priority}
           className="object-cover"
         />
-      ) : (
+      ) : null}
+
+      {image && dither && <DitherLayer src={image} res={ditherRes} />}
+
+      {!image && (
         <>
           {/* Sheen — one soft diagonal so the ground does not read as flat fill. */}
           <div
@@ -149,6 +167,7 @@ export function LotPlate({
           </svg>
         </>
       )}
+
 
       {/* Inner hairline, inset so it reads as a mount rather than a border.
           Kept over photographs too — it is what makes the grid read as a

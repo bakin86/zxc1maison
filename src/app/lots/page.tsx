@@ -86,7 +86,7 @@ export default async function LotsPage(props: PageProps<"/lots">) {
           <p className="eyebrow animate-rise-in text-muted">{t.lots.eyebrow}</p>
 
           <h1
-            className="display mt-6 animate-rise-in text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.96] font-light tracking-[-0.035em] text-ink"
+            className="display mt-6 animate-rise-in text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.96] tracking-[-0.035em] text-ink"
             style={{ animationDelay: `${BEAT}ms` }}
           >
             {t.lots.title}

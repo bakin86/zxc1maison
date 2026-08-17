@@ -2,6 +2,7 @@
 
 import { useTransition } from "react";
 import { Header } from "@/components/site/Header";
+import { RollingNumber } from "@/components/site/RollingNumber";
 import { LiveDot } from "@/components/lot/LotCard";
 import { LotPlate } from "@/components/lot/LotPlate";
 import { placeBid as submitBid } from "@/lib/api";
@@ -157,13 +158,15 @@ export function AuctionRoom({ lot }: { lot: Lot }) {
             <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-b border-line pb-5">
               <div>
                 <p className="eyebrow">{t.room.currentPrice}</p>
+                {/* The headline number rolls rather than swaps. aria-live sits
+                    on the wrapper with plain text, so assistive tech announces
+                    "1 208 оноо" once instead of narrating every digit. */}
                 <p
-                  key={state.currentPts}
-                  data-numerals
                   aria-live="polite"
-                  className="display mt-2 animate-flare-in text-[clamp(2.75rem,11vw,4.5rem)] text-ink"
+                  aria-atomic="true"
+                  className="display mt-2 text-[clamp(2.75rem,11vw,4.5rem)] text-ink"
                 >
-                  {pts(state.currentPts)}
+                  <RollingNumber value={state.currentPts} />
                   <span className="ml-2 align-baseline text-base font-normal tracking-normal text-muted">
                     {t.common.point}
                   </span>

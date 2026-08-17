@@ -111,8 +111,17 @@
 
 /* ── 2. Semantic tokens — light is the default ───────────────────────────── */
 @theme {
+  /*
+   * Helvetica Neue first, per the client. macOS/iOS gets the genuine face;
+   * everyone else falls through to Inter, which is close enough in proportion
+   * that the layout does not shift between the two.
+   *
+   * Arial sits AFTER Inter on purpose. Windows has Arial, so putting it earlier
+   * would mean Windows never reaches the webfont — and Arial's Cyrillic is
+   * noticeably weaker than Inter's for a page set entirely in it.
+   */
   --font-sans:
-    "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, var(--font-manrope),
+    "Helvetica Neue", "HelveticaNeue", Helvetica, var(--font-inter), Arial,
     sans-serif;
 
   --color-ground: var(--bone-page);
@@ -319,7 +328,14 @@
 
   /* Editorial display setting for large numerals and titles. */
   .display {
-    font-weight: 300;
+    /*
+     * 600, not 300. The client asked for Helvetica Neue and explicitly not the
+     * light cut — and they are right for this material: hairline weights at
+     * display size look elegant on a white gallery page but go weak and papery
+     * on a dark ground, which is most of this site. A medium-bold grotesque at
+     * 11rem reads as confident; the same size at 300 reads as tentative.
+     */
+    font-weight: 600;
     letter-spacing: -0.035em;
     line-height: 0.92;
   }
@@ -438,6 +454,22 @@
   }
   100% {
     transform: translateX(230%) skewX(-18deg);
+  }
+}
+
+/*
+ * Touch devices have no hover, so `group-hover` alone would strand every phone
+ * on the dithered plate permanently. There the reveal is scroll-driven instead:
+ * DitherLayer's observer sets data-revealed as a plate crosses the middle of the
+ * screen, and only this rule acts on it.
+ *
+ * Deliberately unlayered. Tailwind's `opacity-100` lives in @layer utilities,
+ * and an unlayered rule beats any layered one regardless of specificity — which
+ * is what makes this override reliable without !important.
+ */
+@media (hover: none) {
+  .dither-layer[data-revealed="true"] {
+    opacity: 0;
   }
 }
 

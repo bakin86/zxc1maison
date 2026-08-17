@@ -25,6 +25,7 @@ export const t = {
 
   nav: {
     lots: "Лотууд",
+    overview: "Тойм",
     rules: "Журам",
     about: "Бидний тухай",
     contact: "Холбоо барих",
@@ -56,6 +57,21 @@ export const t = {
     liveNow: "Шууд эхэлсэн",
     rightNow: "Яг одоо",
     lastBid: "сүүлийн хаялт",
+
+    /* Slate — the metadata strip across the top of the opening frame, set like
+       a film slate or the masthead of a Swiss journal. */
+    slatePlace: "Улаанбаатар",
+    slateEdition: "Дөрөвдүгээр цуглуулга",
+    slateYear: "2026",
+
+    scrollCue: "Гүйлгэ",
+    indexEyebrow: "Каталог",
+    indexTitle: "Жагсаалт",
+    indexHintDesktop: "Мөр дээр очиход зураг солигдоно",
+    colLot: "Лот",
+    colObject: "Бүтээл",
+    colEstimate: "Үнэлгээ",
+    colStatus: "Төлөв",
     liveNowPlural: "Шууд явагдаж байна",
     liveCount: (n: number) => `${n} лот шууд явагдаж байна`,
     otherLive: "Бусад шууд лот",
@@ -74,6 +90,43 @@ export const t = {
     statDuration: "нийт хугацаа",
     statPoint: "нэг оноо",
     statFinal: "сүүлийн тойрог",
+  },
+
+  /*
+   * The Descent — the cinematic landing at `/`.
+   *
+   * Floors are *named*, never numbered. A numbered floor is a progress
+   * indicator, and a progress indicator tells you how much is left, which is
+   * the one thing this piece is built to withhold.
+   */
+  descent: {
+    floors: {
+      street: "Гудамж",
+      vestibule: "Үүд",
+      stair: "Шат",
+      threshold: "Босго",
+      hall: "Танхим",
+    },
+
+    scrollCue: "Гүйлгэ",
+
+    /* 02 — the two clocks, dissected. */
+    clocksEyebrow: "Танхимын дэг",
+    clocksTitle: "Хоёр цаг зэрэг явна",
+
+    /* 03 — the six rounds, on two rails at different speeds. */
+    roundWord: "Тойрог",
+    lasts: (label: string) => `${label} үргэлжилнэ`,
+    stairNote: "Тойрог давах тусам хугацаа хумирна",
+
+    /* 04 — the hammer. */
+    finalClock: "5 СЕК",
+    hammered: "ЦОХИВ",
+
+    /* 05 — the hall. */
+    hallTitle: "Цаг хугацаа шийднэ.",
+    hallLede: "Хамгийн тэвчээртэй нь бус, хамгийн шийдэмгий нь цохино.",
+    enter: "Танхимд орох",
   },
 
   lot: {

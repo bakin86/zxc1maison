@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { pts } from "@/lib/format";
 import { t } from "@/lib/copy";
+import { RollingNumber } from "./RollingNumber";
 
 export type TickerLot = {
   id: string;
@@ -90,15 +90,10 @@ export function LiveTicker({ lots }: { lots: TickerLot[] }) {
               </span>
             </p>
 
-            <motion.span
-              key={price}
-              initial={{ opacity: 0.4 }}
-              animate={{ opacity: 1 }}
-              data-numerals
+            <RollingNumber
+              value={price}
               className="shrink-0 font-semibold text-flare"
-            >
-              {pts(price)}
-            </motion.span>
+            />
           </motion.div>
         </AnimatePresence>
       </div>

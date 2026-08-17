@@ -99,7 +99,7 @@ export function LotPreview({ lot }: { lot: Lot }) {
               ) : isUnsold ? (
                 <>
                   <p className="eyebrow">{t.lot.result}</p>
-                  <p className="mt-2 text-2xl font-light text-ink">
+                  <p className="mt-2 text-2xl text-ink">
                     {t.lot.statusUnsold}
                   </p>
                   <p className="mt-2 text-xs text-muted">
@@ -109,7 +109,7 @@ export function LotPreview({ lot }: { lot: Lot }) {
               ) : (
                 <>
                   <p className="eyebrow">{t.lot.startsAt}</p>
-                  <p data-numerals className="mt-2 text-2xl font-light text-ink">
+                  <p data-numerals className="mt-2 text-2xl text-ink">
                     {lotDate(lot.startsAt)}
                   </p>
                   <p className="mt-2 text-xs text-muted">

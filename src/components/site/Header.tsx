@@ -17,6 +17,10 @@ const LINKS = [
   { href: "/lots", label: t.nav.lots, desktop: true },
   { href: "/rules", label: t.nav.rules, desktop: true },
   { href: "/about", label: t.nav.about, desktop: true },
+  /* `/` is the cinematic landing now, so the live lot, round ladder, index and
+     results moved to /overview. It sits in the burger for the same reason
+     contact does — the pill is already full at three labels. */
+  { href: "/overview", label: t.nav.overview, desktop: false },
   { href: "/contact", label: t.nav.contact, desktop: false },
 ] as const;
 

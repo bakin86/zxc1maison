@@ -31,7 +31,7 @@ export function AuthShell({
         <div className="mx-auto w-full max-w-sm">
           <p className="eyebrow text-muted">{t.brand.name}</p>
 
-          <h1 className="display mt-4 text-[clamp(2rem,7vw,3rem)] leading-[1.02] font-light tracking-[-0.035em] text-ink">
+          <h1 className="display mt-4 text-[clamp(2rem,7vw,3rem)] leading-[1.02] tracking-[-0.035em] text-ink">
             {title}
           </h1>
 

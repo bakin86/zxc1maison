@@ -68,7 +68,7 @@ export function BidClock({
         aria-live="off"
         animate={urgency === "hot" && !frozen ? { scale: [1, 1.02, 1] } : { scale: 1 }}
         transition={{ repeat: Infinity, duration: 0.6 }}
-        className={`display mt-2.5 text-[clamp(2.5rem,12vw,5.5rem)] font-extralight tracking-tight transition-colors duration-300 ${
+        className={`display mt-2.5 text-[clamp(2.5rem,12vw,5.5rem)] tracking-tight transition-colors duration-300 ${
           URGENCY_TEXT[urgency]
         }`}
       >

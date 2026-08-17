@@ -1,22 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { MotionProvider } from "@/components/site/MotionProvider";
 import { t } from "@/lib/copy";
 
 /**
- * Manrope carries Cyrillic, is web-licensed, and its tight geometric numerals
- * suit a price ticker — which is most of this site's typography.
+ * Helvetica Neue leads the stack in globals.css; this is what everyone who does
+ * not have it actually sees.
  *
- * To switch to genuine Helvetica Neue (not web-licensed, absent on Windows and
- * Android, so it can only ever lead a stack): drop the woff2 files in
- * /public/fonts, declare @font-face, and put that family first in --font-sans
- * in globals.css. Manrope stays as the fallback and nothing else changes.
+ * Inter, not Manrope. Manrope is a geometric sans with circular bowls — beside
+ * Helvetica it reads as a different typeface entirely, so Mac and Windows would
+ * have looked like two different brands. Inter is a neo-grotesque cut from the
+ * same lineage as Helvetica: same closed apertures, same horizontal terminals,
+ * near-identical proportions. It also carries a full Cyrillic set, which the
+ * Mongolian copy needs and which many Helvetica Neue cuts lack.
+ *
+ * Helvetica Neue is not web-licensed and does not exist on Windows or Android,
+ * so it can only ever be *first* in a stack, never a webfont. If the client
+ * licenses it, drop the woff2 files in /public/fonts and declare @font-face —
+ * the stack order in globals.css already puts it ahead of this.
  */
-const manrope = Manrope({
-  variable: "--font-manrope",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin", "cyrillic"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -70,7 +76,7 @@ const BEFORE_PAINT = `(function(){try{var d=document.documentElement;d.classList
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="mn" className={manrope.variable} suppressHydrationWarning>
+    <html lang="mn" className={inter.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: BEFORE_PAINT }} />
       </head>
